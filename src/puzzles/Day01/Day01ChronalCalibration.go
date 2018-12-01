@@ -36,28 +36,22 @@ func part1(input io.Reader) int {
 func part2(input io.Reader, set map[int]bool, sum int) int {
 	inputScanner := bufio.NewScanner(input)
 	set[0] = true
-	foundDuplicate := false
 	for inputScanner.Scan() {
 		value, err := strconv.Atoi(inputScanner.Text())
 		if err == nil {
 			sum += value
-			if set[sum] == false {
+			if !set[sum] {
 				set[sum] = true
 			} else {
-				foundDuplicate = true
-				break
+				return sum
 			}
 		}
 	}
 
-	if !foundDuplicate {
-		seeker, ok := input.(io.Seeker)
-		if ok {
-			_, _ = seeker.Seek(0, 0)
-		}
-
-		return part2(input, set, sum)
+	seeker, ok := input.(io.Seeker)
+	if ok {
+		_, _ = seeker.Seek(0, 0)
 	}
 
-	return sum
+	return part2(input, set, sum)
 }
