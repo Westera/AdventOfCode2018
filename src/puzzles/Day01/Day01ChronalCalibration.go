@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("src/puzzles/Day01/Day1_1")
+	file, err := os.Open("resources/Day1_1")
 
 	if err == nil {
 		fmt.Printf("Result of part1: %d\n", part1(file))
