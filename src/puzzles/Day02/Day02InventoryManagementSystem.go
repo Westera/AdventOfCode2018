@@ -70,5 +70,5 @@ func part2(input io.Reader) string {
 		}
 		inputs = append(inputs, line)
 	}
-	return ""
+	panic("No solution to problem")
 }
